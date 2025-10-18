@@ -4,13 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.practica1Moviles.Ticona.navigation.AppNavGraph
 import com.practica1Moviles.Ticona.ui.theme.Practica1Moviles22200168Theme
 
 class MainActivity : ComponentActivity() {
@@ -18,30 +12,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Practica1Moviles22200168Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            // Forzar tema claro y desactivar dynamicColor para asegurar que se use la paleta personalizada
+            Practica1Moviles22200168Theme(darkTheme = false, dynamicColor = false) {
+                // Lanza el grafo de navegación principal que contiene la pantalla Home como startDestination
+                AppNavGraph()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Practica1Moviles22200168Theme {
-        Greeting("Android")
     }
 }

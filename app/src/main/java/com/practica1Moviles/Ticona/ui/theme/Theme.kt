@@ -1,26 +1,37 @@
 package com.practica1Moviles.Ticona.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = ButtonGreenVariant,
+    onPrimary = OnButton,
+    secondary = ButtonGreen,
+    tertiary = Pink80,
+    background = DarkGreenBackground,
+    surface = DarkGreenBackground,
+    onBackground = OnDarkBackground
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = ButtonGreen,
+    onPrimary = OnButton,
+    secondary = ButtonGreenVariant,
+    tertiary = Pink40,
+    background = LightGreenBackground,
+    surface = LightGreenBackground,
+    onBackground = Color(0xFF0F1720)
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -37,7 +48,7 @@ private val LightColorScheme = lightColorScheme(
 fun Practica1Moviles22200168Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -53,6 +64,12 @@ fun Practica1Moviles22200168Theme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
-    )
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = colorScheme.background
+        ) {
+            content()
+        }
+    }
 }
