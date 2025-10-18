@@ -17,8 +17,6 @@ import com.practica1Moviles.Ticona.ui.theme.Practica1Moviles22200168Theme
 
 @Composable
 fun HomeScreen(onNavigate: (String) -> Unit) {
-
-
     Column(
 
         modifier = Modifier
